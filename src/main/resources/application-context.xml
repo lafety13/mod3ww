@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="main" class="ua.goit.java.jdbc.Main">
+        <property name="developerController" ref="developerController"/>
+        <property name="projectController" ref="projectController"/>
+    </bean>
+
+    <bean id="developerController" class="ua.goit.java.jdbc.controllers.DeveloperController" >
+        <property name="developerDao" ref="developerDao"/>
+    </bean>
+
+    <bean id="developerDao" class="ua.goit.java.jdbc.models.dao.DeveloperDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <bean id="projectController" class="ua.goit.java.jdbc.controllers.ProjectController">
+        <property name="projectDAO" ref="projectDao"/>
+    </bean>
+    <bean id="projectDao" class="ua.goit.java.jdbc.models.dao.ProjectDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+
+</beans>
